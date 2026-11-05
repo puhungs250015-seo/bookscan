@@ -46,7 +46,7 @@ async function detect(image){
     })));
   }catch(e){return []}
 }
-// Geometry: BarcodeDetector can return corners in different cyclic orders and
+
 // occasionally includes a wildly displaced corner. Normalize in image coordinates.
 const finitePoint=p=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y);
 function rectangleCorners(x,y,width,height){return [{x,y},{x:x+width,y},{x:x+width,y:y+height},{x,y:y+height}]}
