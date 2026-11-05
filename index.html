@@ -1,0 +1,408 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f7f8fa"><title>Shelfwise — 도서관 배가 관리</title><style>
+:root{font-family:Inter,"Pretendard","Apple SD Gothic Neo",system-ui,sans-serif;color:#17212e;background:#f7f8fa;font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}.app{min-height:100vh;display:grid;grid-template-columns:236px 1fr}.side{background:#101b2a;color:#e8eef6;padding:28px 18px;display:flex;flex-direction:column;gap:28px}.brand{font-size:20px;font-weight:800;letter-spacing:-.7px;padding:0 12px}.brand small{display:block;font-size:10px;letter-spacing:2.5px;color:#90a3ba;margin-top:4px}.nav{display:grid;gap:6px}.nav button{border:0;background:transparent;color:#a7b6c8;padding:14px 15px;border-radius:11px;text-align:left;font-weight:650}.nav button.active{background:#26384f;color:white}.sidefoot{margin-top:auto;color:#8194a9;font-size:12px;line-height:1.7;padding:10px}.main{min-width:0;padding:36px clamp(20px,4vw,64px) 80px;max-width:1560px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:28px}.eyebrow{font-size:12px;letter-spacing:1.5px;font-weight:800;color:#65758a;text-transform:uppercase}.top h1{font-size:clamp(24px,3vw,32px);letter-spacing:-1.1px;margin:7px 0 0}.tag{background:#e9f3ef;color:#1b7251;padding:9px 12px;border-radius:30px;font-size:12px;font-weight:750}.panel{background:white;border:1px solid #e5e9ee;border-radius:18px;padding:24px;box-shadow:0 5px 22px #13283b08}.panel h2{margin:0 0 8px;font-size:18px;letter-spacing:-.4px}.muted{color:#708095;font-size:13px;line-height:1.6}.grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);gap:20px}.stack{display:grid;gap:20px}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.btn{border:1px solid #dce3eb;border-radius:11px;padding:11px 15px;background:#fff;color:#263448;font-weight:700;font-size:13px}.btn.primary{background:#175a52;border-color:#175a52;color:white}.btn.dark{background:#17273b;color:white;border-color:#17273b}.btn:focus-visible,.nav button:focus-visible{outline:3px solid #84b8ff}.field{display:grid;gap:7px;font-size:12px;font-weight:750;color:#53647a}.field input,.field select,.field textarea{width:100%;border:1px solid #dbe2ea;background:#fff;border-radius:10px;padding:12px;color:#17212e;outline-color:#458a80}.field textarea{min-height:210px;resize:vertical;line-height:1.8}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.camera{position:relative;background:#101923;aspect-ratio:16/10;border-radius:15px;overflow:hidden;display:flex;align-items:center;justify-content:center}.camera video,.camera img,.camera canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}.camera video{object-fit:contain}.camera canvas{pointer-events:none}.empty{color:#c4cfdb;text-align:center;max-width:290px;line-height:1.8;font-size:14px;padding:20px}.cameraBar{position:absolute;z-index:4;bottom:12px;left:12px;right:12px;display:flex;justify-content:space-between;gap:10px;align-items:center;pointer-events:none}.cameraBar>*{pointer-events:auto}.camBadge{background:#0b1727bd;color:#fff;border:1px solid #ffffff2b;padding:9px 12px;border-radius:9px;font-size:12px;max-width:75%}.camera .btn{background:#fff}.metricrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.metric{padding:16px;border-radius:12px;background:#f6f8fa}.metric strong{display:block;font-size:26px;margin-top:5px}.metric span{font-size:12px;color:#6b7b8c}.list{display:grid;gap:8px;max-height:360px;overflow:auto}.item{border:1px solid #e6ebf0;border-radius:11px;padding:12px;display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:13px}.item b{font-size:13px}.item small{display:block;color:#8190a1;margin-top:4px}.pill{border-radius:7px;padding:5px 8px;font-size:11px;font-weight:800;white-space:nowrap}.pill.ok{background:#e4f5ed;color:#207a52}.pill.bad{background:#fff0e7;color:#b35c2c}.pill.review{background:#f1f3f6;color:#64758b}.hidden{display:none!important}.note{background:#f3f7f8;border:1px solid #dce9e8;padding:13px 15px;border-radius:10px;font-size:12px;color:#526c70;line-height:1.7}.catalog{display:grid;grid-template-columns:minmax(290px,.9fr) minmax(0,1.1fr);gap:20px}.labels{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;max-height:570px;overflow:auto}.labelcard{border:1px solid #e1e6eb;border-radius:12px;padding:13px;display:flex;align-items:center;gap:10px;min-height:145px}.labelcard canvas{width:57px;height:119px;image-rendering:pixelated;flex:none}.labelcard b{font-size:12px;overflow-wrap:anywhere}.labelcard small{font-size:11px;color:#7d8a98;display:block;margin-top:5px}.printhead{display:none}.scanFull{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;aspect-ratio:auto!important;border-radius:0!important;z-index:100;background:#050a0e}.scanFull video,.scanFull img,.scanFull canvas{object-fit:contain}.scanFull .cameraBar{bottom:max(22px,env(safe-area-inset-bottom));left:16px;right:16px}.scanFull .camBadge{font-size:13px}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#17273b;color:#fff;padding:12px 18px;border-radius:11px;z-index:200;font-size:13px;max-width:90vw;box-shadow:0 10px 40px #0003}.statusline{font-size:12px;color:#647589;line-height:1.7;margin-top:12px}.check{display:flex;align-items:center;gap:8px;font-size:13px;color:#46596d}.check input{accent-color:#175a52}.sep{height:1px;background:#e9edf1;margin:18px 0}.fullExit{display:none}.scanFull .fullExit{display:inline-flex}.scanFull .fullEnter{display:none}@media(max-width:960px){.app{display:block}.side{padding:12px 16px;flex-direction:row;align-items:center;gap:15px}.brand{font-size:17px;padding:0}.brand small,.sidefoot{display:none}.nav{display:flex;flex:1;justify-content:flex-end}.nav button{padding:10px;font-size:12px}.main{padding:23px 15px 70px}.grid,.catalog{grid-template-columns:1fr}.camera{aspect-ratio:4/3}.panel{padding:17px}.top{margin-bottom:18px}}@media(max-width:450px){.top{align-items:flex-start}.tag{font-size:10px}.formgrid{grid-template-columns:1fr}.metric{padding:12px}.metric strong{font-size:22px}.nav button{padding:9px 7px}.camera{aspect-ratio:3/4}.cameraBar{flex-wrap:wrap}.camBadge{max-width:100%}}@media print{body{background:white}.side,.top,.main>section:not(#catalogPage),#catalogForm,.catalog>.panel:first-child,.noprint{display:none!important}.app,.main,.catalog{display:block!important;padding:0!important;margin:0!important}.catalog>.panel:last-child{border:0;box-shadow:none;padding:0}.labels{max-height:none;overflow:visible;display:grid;grid-template-columns:repeat(3,1fr);gap:7mm}.labelcard{break-inside:avoid;border:1px solid #ccc;border-radius:0;min-height:40mm}.printhead{display:block;font-size:16px;margin-bottom:12mm}#catalogPage{display:block!important}}
+</style></head><body><div class="app"><aside class="side"><div class="brand">SHELFWISE<small>LIBRARY OPERATIONS</small></div><nav class="nav"><button class="active" data-page="scan">검사</button><button data-page="catalog">책 등록 · 라벨</button><button data-page="history">기록</button></nav><div class="sidefoot">이미지 인식 결과는 검토 후 확정하세요.<br>데이터는 이 브라우저에 저장됩니다.</div></aside><main class="main"><header class="top"><div><div class="eyebrow" id="sectionName">Vision inspection</div><h1 id="pageTitle">책장 검사</h1></div><span class="tag" id="systemTag">로컬 프로토타입</span></header>
+<section id="scanPage"><div class="grid"><div class="stack"><div class="panel"><div class="row" style="justify-content:space-between;margin-bottom:16px"><div><h2>카메라 검사</h2><div class="muted">세로형 라벨과 책등 경계를 구분해 추정하고 위치를 비교합니다.</div></div><label class="field">검사 책장<select id="scanShelf"></select></label></div><div class="camera" id="camera"><video id="video" autoplay playsinline muted class="hidden"></video><img id="photo" class="hidden" alt="검사 이미지"><canvas id="overlay"></canvas><div class="empty" id="empty">카메라를 시작하거나 사진을 선택하세요.<br>인식 가능한 Code 128 라벨이 필요합니다.</div><div class="cameraBar"><span class="camBadge" id="cameraStatus">대기 중</span><div class="row"><button class="btn fullEnter" id="fullBtn">전체 화면</button><button class="btn fullExit" id="exitBtn">닫기</button><button class="btn primary" id="captureBtn">촬영 · 검사</button></div></div></div><div class="row" style="margin-top:15px"><button class="btn primary" id="startBtn">카메라 시작</button><button class="btn" id="stopBtn">카메라 종료</button><button class="btn" id="uploadBtn">사진 선택</button><input type="file" id="fileInput" accept="image/*" capture="environment" hidden><button class="btn" id="analyzeBtn">현재 이미지 분석</button></div><div class="row" style="margin-top:14px"><label class="field" style="flex:1;min-width:190px">수동 코드 확인<input id="manualCode" placeholder="예: SW1234ABCD" autocapitalize="characters"></label><button class="btn" id="manualAdd">코드 추가</button></div><div class="statusline" id="supportText">실시간 카메라는 HTTPS 또는 localhost에서 사용할 수 있습니다. 지원되는 브라우저에서는 Code 128을 직접 판독합니다.</div></div><div class="panel"><h2>판정 기준</h2><div class="muted">책장의 실제 순번이 확인되지 않으면 같은 선반의 순서 오류를 확정하지 않습니다.</div><div class="sep"></div><label class="check"><input type="checkbox" id="orderConfirmed"> 촬영한 선반의 모든 책이 보이고 순번을 확인했습니다.</label><label class="check" style="margin-top:12px"><input type="checkbox" id="showSpines" checked> 책등 윤곽 함께 표시 (추정)</label><div class="note" style="margin-top:15px">초록색 실선: 인식된 바코드의 실제 검출 위치 · 청록색 점선: 픽셀 경계에 기반한 책등 추정. 왼쪽 위의 작은 원은 교정된 첫 번째 꼭짓점입니다. 책등 추정은 AI 정밀 분할이 아니므로 불확실한 결과는 검토하세요.</div></div></div><div class="stack"><div class="panel"><h2>검사 요약</h2><div class="metricrow" style="margin-top:17px"><div class="metric"><span>인식</span><strong id="mRead">0</strong></div><div class="metric"><span>오배치</span><strong id="mBad">0</strong></div><div class="metric"><span>확인 필요</span><strong id="mReview">0</strong></div></div><div class="statusline" id="scanMessage">검사 결과가 아직 없습니다.</div></div><div class="panel"><div class="row" style="justify-content:space-between"><h2>인식된 책</h2><button class="btn" id="saveBtn">검사 저장</button></div><div class="list" id="results"><div class="muted">사진을 분석하면 결과가 표시됩니다.</div></div></div><div class="panel"><h2>정리 안내</h2><div class="muted" style="margin-bottom:12px">확정된 다른 책장 오배치부터 회수합니다.</div><div class="list" id="tasks"><div class="muted">생성된 작업이 없습니다.</div></div></div></div></div></section>
+<section id="catalogPage" class="hidden"><div class="catalog"><div class="panel" id="catalogForm"><h2>책과 책장 등록</h2><p class="muted">책장 ID와 책 제목을 입력하면 고유 식별 코드를 발급하고, 세로로 긴 Code 128 라벨 이미지를 생성합니다.</p><div class="formgrid"><label class="field">책장 ID<input id="shelfId" placeholder="A01" maxlength="12" value="A01"></label><label class="field">선반 번호<input id="rackId" type="number" min="1" max="99" value="1"></label></div><label class="field" style="margin-top:16px">책 리스트 (한 줄에 한 권)<textarea id="bookNames" placeholder="자료구조 입문&#10;생명과학의 이해&#10;물리학 개론"></textarea></label><div class="row" style="margin-top:15px"><button class="btn primary" id="createLabels">책 등록 · 바코드 생성</button><button class="btn" id="exportCatalog">목록 JSON 백업</button><button class="btn" id="clearCatalog">등록 전체 삭제</button></div><p class="note">고유 ID는 책의 정체를 나타내며 기준 위치는 별도로 저장됩니다. 책을 옮겨도 라벨을 재발급할 필요가 없습니다. 기존 책을 중복 등록하지 않도록 제목을 확인하세요.</p></div><div class="panel"><div class="row noprint" style="justify-content:space-between;align-items:center;margin-bottom:14px"><div><h2>발급 라벨</h2><div class="muted"><span id="catalogCount">0</span>권 등록됨 · 24mm × 75mm 인쇄용</div></div><button class="btn dark" id="printLabels">라벨 인쇄</button></div><div class="printhead">SHELFWISE — 등록 도서 라벨</div><div class="labels" id="labelList"><div class="muted">책을 등록하면 라벨이 생성됩니다.</div></div></div></div></section>
+<section id="historyPage" class="hidden"><div class="panel"><div class="row" style="justify-content:space-between"><div><h2>검사 기록</h2><div class="muted">기록은 현재 브라우저에만 저장됩니다.</div></div><button class="btn" id="clearHistory">기록 삭제</button></div><div class="list" id="historyList" style="margin-top:20px;max-height:none"></div></div></section>
+</main></div><div id="toast" class="toast hidden"></div><script>
+'use strict';
+const $=id=>document.getElementById(id),KEY='shelfwise_v5_store', state={books:[],history:[],reads:[],stream:null,frame:null,scanning:false,raf:0,source:'none',scanAt:0,detector:null,imageW:0,imageH:0,cornerMemory:new Map(),bookMemory:new Map(),videoGeneration:0};
+const PATTERNS=["BaBbBb", "BbBaBb", "BbBbBa", "AbAbBc", "AbAcBb", "AcAbBb", "AbBbAc", "AbBcAb", "AcBbAb", "BbAbAc", "BbAcAb", "BcAbAb", "AaBbCb", "AbBaCb", "AbBbCa", "AaCbBb", "AbCaBb", "AbCbBa", "BbCbAa", "BbAaCb", "BbAbCa", "BaCbAb", "BbCaAb", "CaBaCa", "CaAbBb", "CbAaBb", "CbAbBa", "CaBbAb", "CbBaAb", "CbBbAa", "BaBaBc", "BaBcBa", "BcBaBa", "AaAcBc", "AcAaBc", "AcAcBa", "AaBcAc", "AcBaAc", "AcBcAa", "BaAcAc", "BcAaAc", "BcAcAa", "AaBaCc", "AaBcCa", "AcBaCa", "AaCaBc", "AaCcBa", "AcCaBa", "CaCaBa", "BaAcCa", "BcAaCa", "BaCaAc", "BaCcAa", "BaCaCa", "CaAaBc", "CaAcBa", "CcAaBa", "CaBaAc", "CaBcAa", "CcBaAa", "CaDaAa", "BbAdAa", "DcAaAa", "AaAbBd", "AaAdBb", "AbAaBd", "AbAdBa", "AdAaBb", "AdAbBa", "AaBbAd", "AaBdAb", "AbBaAd", "AbBdAa", "AdBaAb", "AdBbAa", "BdAbAa", "BbAaAd", "DaCaAa", "BdAaAb", "AcDaAa", "AaAbDb", "AbAaDb", "AbAbDa", "AaDbAb", "AbDaAb", "AbDbAa", "DaAbAb", "DbAaAb", "DbAbAa", "BaBaDa", "BaDaBa", "DaBaBa", "AaAaDc", "AaAcDa", "AcAaDa", "AaDaAc", "AaDcAa", "DaAaAc", "DaAcAa", "AaCaDa", "AaDaCa", "CaAaDa", "DaAaCa", "BaAdAb", "BaAbAd", "BaAbCb", "BcCaAaB"];
+const cleanId=s=>s.toUpperCase().trim().replace(/[^A-Z0-9_-]/g,'').slice(0,12);
+function toast(s){let t=$('toast');t.textContent=s;t.classList.remove('hidden');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.add('hidden'),3500)}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify({books:state.books,history:state.history}))}catch(e){toast('저장 공간이 부족하거나 저장이 차단되었습니다.')}}
+try{let saved=JSON.parse(localStorage.getItem(KEY)||'{}');state.books=Array.isArray(saved.books)?saved.books:[];state.history=Array.isArray(saved.history)?saved.history:[]}catch(e){toast('저장 데이터를 읽지 못했습니다.')}
+function nav(p){for(let b of document.querySelectorAll('[data-page]'))b.classList.toggle('active',b.dataset.page===p);for(let id of ['scan','catalog','history'])$(id+'Page').classList.toggle('hidden',id!==p);$('pageTitle').textContent={scan:'책장 검사',catalog:'책 등록 및 바코드 발급',history:'검사 기록'}[p];$('sectionName').textContent={scan:'Vision inspection',catalog:'Catalog & labels',history:'Activity history'}[p];if(p==='catalog')renderLabels();if(p==='history')renderHistory()}
+document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>nav(b.dataset.page));
+function shelfOptions(){let selected=$('scanShelf').value;let shelves=[...new Set(state.books.map(b=>b.shelf))].sort();$('scanShelf').replaceChildren();for(let s of shelves){let op=document.createElement('option');op.value=s;op.textContent=s;$('scanShelf').append(op)}if(shelves.includes(selected))$('scanShelf').value=selected;else if(!shelves.length){let op=document.createElement('option');op.textContent='등록된 책장 없음';op.value='';$('scanShelf').append(op)}}
+function createBooks(){let shelf=cleanId($('shelfId').value),rack=Number($('rackId').value),names=$('bookNames').value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);if(!shelf||!Number.isInteger(rack)||rack<1||rack>99||!names.length){toast('책장 ID, 선반 번호, 책 리스트를 확인하세요.');return}let existing=state.books.filter(b=>b.shelf===shelf&&b.rack===rack),pos=existing.length?Math.max(...existing.map(b=>b.pos)):0,created=0,skipped=0;for(let title of names){if(state.books.some(b=>b.shelf===shelf&&b.rack===rack&&b.title===title)){skipped++;continue}let uid;do{uid='SW'+Math.random().toString(36).slice(2,10).toUpperCase()}while(state.books.some(b=>b.uid===uid));state.books.push({uid,title,shelf,rack,pos:++pos});created++}persist();shelfOptions();renderLabels();toast(`${created}권 등록 완료${skipped?' · 중복 제목 '+skipped+'권 제외':''}`)}
+function code128Modules(str){const symbols=[104];for(let c of str){let n=c.charCodeAt(0)-32;if(n<0||n>94)throw Error('Code 128B 범위 외 문자');symbols.push(n)}let sum=104;for(let i=1;i<symbols.length;i++)sum+=symbols[i]*i;symbols.push(sum%103,106);let bits=[];for(let sym of symbols){for(let c of PATTERNS[sym]){let n='abcd'.indexOf(c.toLowerCase())+1;for(let k=0;k<n;k++)bits.push(c===c.toUpperCase()?1:0)}}return [...Array(10).fill(0),...bits,...Array(10).fill(0)]}
+function barcodeCanvas(uid){let bits=code128Modules(uid),c=document.createElement('canvas');c.width=110;c.height=380;let g=c.getContext('2d');g.fillStyle='white';g.fillRect(0,0,c.width,c.height);const moduleW=310/bits.length;g.save();g.translate(86,28);g.rotate(Math.PI/2);g.fillStyle='#101820';bits.forEach((bit,i)=>{if(bit)g.fillRect(i*moduleW,0,Math.ceil(moduleW+.1),65)});g.restore();g.fillStyle='#162235';g.font='bold 11px monospace';g.save();g.translate(18,355);g.rotate(-Math.PI/2);g.fillText(uid,0,0);g.restore();return c}
+function renderLabels(){let box=$('labelList');box.replaceChildren();$('catalogCount').textContent=state.books.length;if(!state.books.length){box.textContent='등록된 책이 없습니다.';return}for(let b of state.books){let card=document.createElement('div');card.className='labelcard';let cv=barcodeCanvas(b.uid);let info=document.createElement('div');let name=document.createElement('b');name.textContent=b.title;let meta=document.createElement('small');meta.textContent=`${b.shelf} / ${b.rack}단 / ${b.pos}번`;let code=document.createElement('small');code.textContent=b.uid;info.append(name,meta,code);card.append(cv,info);box.append(card)}}
+function downloadText(name,txt){let a=document.createElement('a'),url=URL.createObjectURL(new Blob([txt],{type:'application/json'}));a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$('createLabels').onclick=createBooks;$('printLabels').onclick=()=>{if(!state.books.length)return toast('먼저 책을 등록하세요.');nav('catalog');window.print()};$('exportCatalog').onclick=()=>downloadText('shelfwise_catalog.json',JSON.stringify({books:state.books},null,2));$('clearCatalog').onclick=()=>{if(confirm('등록된 책과 기준 위치를 모두 삭제할까요?')){state.books=[];persist();shelfOptions();renderLabels();toast('등록 도서가 삭제되었습니다.')}};
+function detectorSupport(){if(!('BarcodeDetector'in window))return false;try{state.detector=new BarcodeDetector({formats:['code_128']});return true}catch(e){return false}}
+const supported=detectorSupport();$('supportText').textContent=supported?'이 브라우저는 Code 128 판독을 지원합니다. 책등의 긴 세로 라벨을 촬영하세요.':'이 브라우저는 BarcodeDetector(Code 128)를 지원하지 않습니다. 카메라 미리보기는 가능하지만 자동 판독은 사용할 수 없습니다. 지원되는 Chrome/Edge 환경을 사용하세요.';
+function setSource(src){state.source=src;$('empty').classList.toggle('hidden',src!=='none');$('video').classList.toggle('hidden',src!=='video');$('photo').classList.toggle('hidden',src!=='photo');$('cameraStatus').textContent=src==='video'?'카메라 준비됨':src==='photo'?'사진 선택됨':'대기 중'}
+async function startCamera(){stopCamera();if(!navigator.mediaDevices?.getUserMedia){toast('카메라 API를 사용할 수 없습니다. HTTPS 주소에서 실행하세요.');return}try{state.stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1920},height:{ideal:1080}},audio:false});$('video').srcObject=state.stream;await $('video').play();setSource('video');state.scanAt=0;let generation=state.videoGeneration;liveLoop(0,generation);toast('카메라가 연결되었습니다.')}catch(e){setSource('none');toast('카메라 시작 실패: '+(e.name||e.message))}}
+function stopCamera(){state.videoGeneration++;state.cornerMemory.clear();state.bookMemory.clear();cancelAnimationFrame(state.raf);if(state.stream){state.stream.getTracks().forEach(t=>t.stop());state.stream=null}if(state.source==='video')setSource('none')}
+function frameCanvas(){let v=$('video'),c=document.createElement('canvas');c.width=v.videoWidth||1280;c.height=v.videoHeight||720;c.getContext('2d').drawImage(v,0,0,c.width,c.height);return c}
+function rotateCanvas(c){let r=document.createElement('canvas');r.width=c.height;r.height=c.width;let g=r.getContext('2d');g.translate(r.width,0);g.rotate(Math.PI/2);g.drawImage(c,0,0);return r}
+async function detect(image){
+  if(!state.detector)return [];
+  let w=image.videoWidth||image.naturalWidth||image.width,h=image.videoHeight||image.naturalHeight||image.height;
+  if(!w||!h)return [];
+  try{
+    let direct=await state.detector.detect(image);
+    if(direct.length)return direct.map(d=>convertDetection(d,w,h,p=>({x:p.x,y:p.y}),b=>b));
+  }catch(e){}
+  try{
+    let c=document.createElement('canvas'),scale=Math.min(1,1400/Math.max(w,h));
+    c.width=Math.round(w*scale);c.height=Math.round(h*scale);
+    c.getContext('2d').drawImage(image,0,0,c.width,c.height);
+    let rotated=rotateCanvas(c),detected=await state.detector.detect(rotated);
+    return detected.map(d=>convertDetection(d,w,h,p=>({x:p.y/scale,y:(c.height-p.x)/scale}),b=>({
+      x:b.y/scale,y:(c.height-b.x-b.width)/scale,width:b.height/scale,height:b.width/scale
+    })));
+  }catch(e){return []}
+}
+// Geometry: BarcodeDetector can return corners in different cyclic orders and
+// occasionally includes a wildly displaced corner. Normalize in image coordinates.
+const finitePoint=p=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y);
+function rectangleCorners(x,y,width,height){return [{x,y},{x:x+width,y},{x:x+width,y:y+height},{x,y:y+height}]}
+function cleanQuad(points,bbox,iw,ih){
+  let valid=(points||[]).filter(finitePoint);
+  const fallback=()=>{
+    if(!bbox||![bbox.x,bbox.y,bbox.width,bbox.height].every(Number.isFinite)||bbox.width<=0||bbox.height<=0)return [];
+    return rectangleCorners(bbox.x,bbox.y,bbox.width,bbox.height).map(p=>({x:Math.max(0,Math.min(iw,p.x)),y:Math.max(0,Math.min(ih,p.y))}));
+  };
+  if(valid.length!==4)return fallback();
+  // The native bounding box is the detector's independent geometry sanity check.
+  if(bbox&&bbox.width>0&&bbox.height>0){
+    let margin=Math.max(4,Math.min(bbox.width,bbox.height)*.13);
+    if(valid.some(p=>p.x<bbox.x-margin||p.x>bbox.x+bbox.width+margin||p.y<bbox.y-margin||p.y>bbox.y+bbox.height+margin))return fallback();
+  }
+  if(valid.some(p=>p.x< -3||p.x>iw+3||p.y< -3||p.y>ih+3))return fallback();
+  // Split into upper/lower pairs: stable ordering TL,TR,BR,BL for vertical labels.
+  let byY=[...valid].sort((a,b)=>a.y-b.y),upper=byY.slice(0,2).sort((a,b)=>a.x-b.x),lower=byY.slice(2).sort((a,b)=>a.x-b.x);
+  let quad=[upper[0],upper[1],lower[1],lower[0]];
+  let cross=(a,b,c)=>(b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);
+  let area=Math.abs(quad.reduce((sum,p,i)=>sum+p.x*quad[(i+1)%4].y-quad[(i+1)%4].x*p.y,0))/2;
+  const xs=valid.map(p=>p.x),ys=valid.map(p=>p.y),bw=Math.max(...xs)-Math.min(...xs),bh=Math.max(...ys)-Math.min(...ys);
+  if(area<Math.max(3,bw*bh*.40)||cross(...quad.slice(0,3))<=0||cross(quad[1],quad[2],quad[3])<=0||cross(quad[2],quad[3],quad[0])<=0||cross(quad[3],quad[0],quad[1])<=0)return fallback();
+  // Correct a displaced top-left corner using the other three vertices only
+  // when the top and bottom edges clearly disagree. A moderate perspective
+  // offset is preserved; wild detector spikes are not.
+  const [tl,tr,br,bl]=quad;
+  const desired={x:tr.x+bl.x-br.x,y:tr.y+bl.y-br.y};
+  const residual=Math.hypot(tl.x-desired.x,tl.y-desired.y);
+  const edgeTop=Math.hypot(tl.x-tr.x,tl.y-tr.y),edgeBottom=Math.hypot(bl.x-br.x,bl.y-br.y);
+  if(residual>Math.max(6,Math.min(edgeTop,edgeBottom)*.60)&&residual<Math.max(iw,ih)*.25){
+    const predicted={x:desired.x*.68+tl.x*.32,y:desired.y*.68+tl.y*.32};
+    // Do not move corrected TL outside the detector's own box.
+    if(!bbox||(predicted.x>=bbox.x-3&&predicted.x<=bbox.x+bbox.width+3&&predicted.y>=bbox.y-3&&predicted.y<=bbox.y+bbox.height+3))quad[0]=predicted;
+  }
+  return quad.map(p=>({x:Math.max(0,Math.min(iw,p.x)),y:Math.max(0,Math.min(ih,p.y))}));
+}
+function nativeBBox(b){if(!b)return null;return {x:b.x,y:b.y,width:b.width,height:b.height}}
+function convertDetection(d,iw,ih,pointMapper,boxMapper){
+  let points=(d.cornerPoints||[]).map(pointMapper),bbox=d.boundingBox?boxMapper(nativeBBox(d.boundingBox)):null;
+  return {value:d.rawValue,points:cleanQuad(points,bbox,iw,ih)};
+}
+function smoothLiveReads(reads){
+  let now=performance.now(),next=new Map();
+  for(let r of reads){let pts=r.points,old=state.cornerMemory.get(r.value);
+    if(pts.length===4&&old?.points?.length===4&&now-old.time<1800){
+      const cx=arr=>arr.reduce((s,p)=>s+p.x,0)/4,cy=arr=>arr.reduce((s,p)=>s+p.y,0)/4;
+      let distance=Math.hypot(cx(pts)-cx(old.points),cy(pts)-cy(old.points));
+      let size=Math.max(12,Math.hypot(pts[2].x-pts[0].x,pts[2].y-pts[0].y));
+      // Do not interpolate after a camera pan, or between different coordinates.
+      if(distance<size*.8)pts=pts.map((p,i)=>({x:old.points[i].x*.57+p.x*.43,y:old.points[i].y*.57+p.y*.43}));
+    }
+    r.points=pts;next.set(r.value,{points:pts,time:now});
+  }
+  state.cornerMemory=next;return reads;
+}
+function uniqueReads(arr){let seen=new Set(),out=[];for(let r of arr){let key=r.value;if(seen.has(key))continue;seen.add(key);out.push(r)}return out}
+function evaluate(reads){let shelf=$('scanShelf').value,books=state.books;return reads.map((r,i)=>{let b=books.find(b=>b.uid===r.value),status=!b?'미등록 코드':b.shelf!==shelf?'다른 책장':'위치 확인 필요';return {...r,book:b||null,status,observed:i+1}})}
+// Prototype book-spine boundary estimator. Each polygon is anchored to a decoded
+// label and fitted to sustained RGB edge evidence. It is NOT a trained model.
+function estimateBookContours(image, reads) {
+  const iw=image.videoWidth||image.naturalWidth||image.width;
+  const ih=image.videoHeight||image.naturalHeight||image.height;
+  if (!iw||!ih||!reads?.length) return new Map();
+  const factor=Math.min(1,850/Math.max(iw,ih)),w=Math.max(1,Math.round(iw*factor)),h=Math.max(1,Math.round(ih*factor));
+  const cv=document.createElement('canvas');cv.width=w;cv.height=h;
+  const ctx=cv.getContext('2d',{willReadFrequently:true});ctx.drawImage(image,0,0,w,h);
+  const rgba=ctx.getImageData(0,0,w,h).data;
+  const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+  const pixel=(x,y)=>4*(clamp(Math.round(y),0,h-1)*w+clamp(Math.round(x),0,w-1));
+  function difference(x1,y1,x2,y2){const a=pixel(x1,y1),b=pixel(x2,y2);return (Math.abs(rgba[a]-rgba[b])+Math.abs(rgba[a+1]-rgba[b+1])+Math.abs(rgba[a+2]-rgba[b+2]))/3}
+  const median=a=>{if(!a.length)return 0;let sorted=[...a].sort((x,y)=>x-y);return sorted[sorted.length>>1]};
+  const items=reads.flatMap(r=>{
+    if(!r.points||r.points.length!==4)return [];
+    const p=r.points, xs=p.map(t=>t.x),ys=p.map(t=>t.y);
+    const x0=Math.min(...xs)*factor,x1=Math.max(...xs)*factor,y0=Math.min(...ys)*factor,y1=Math.max(...ys)*factor;
+    if(x1-x0<2||y1-y0<10)return [];
+    return [{r,cx:(x0+x1)/2,yt:y0,yb:y1,bh:y1-y0,bw:x1-x0}];
+  }).sort((a,b)=>(a.yt+a.yb)-(b.yt+b.yb));
+  if(items.length<2)return new Map();
+  const groups=[];
+  for(const it of items){
+    const cy=(it.yt+it.yb)/2;
+    let g=groups.find(g=>Math.abs(cy-g.mid)<Math.max(30,h*.105,Math.min(it.bh,g.bh)*.55));
+    if(!g){g={mid:cy,bh:it.bh,items:[]};groups.push(g)}
+    g.items.push(it);g.mid=g.items.reduce((s,a)=>s+(a.yt+a.yb)/2,0)/g.items.length;
+    g.bh=median(g.items.map(a=>a.bh));
+  }
+  // Fit one physical vertical seam through several y segments. Barcode stripes
+  // are strongest inside the label, so measure between adjacent label centers.
+  function verticalSeam(lo,hi,ylo,yhi,anchor){
+    lo=clamp(Math.round(lo),2,w-4);hi=clamp(Math.round(hi),lo+1,w-3);
+    if(hi-lo<3||yhi-ylo<18)return {top:anchor,bottom:anchor,quality:0};
+    const bands=[[.05,.32],[.33,.65],[.66,.94]];
+    let picks=[];
+    for(const [fraction0,fraction1] of bands){
+      const ya=clamp(ylo+(yhi-ylo)*fraction0,4,h-4),yb=clamp(ylo+(yhi-ylo)*fraction1,4,h-4);
+      let best=-Infinity,xx=anchor,all=[];
+      for(let x=lo;x<=hi;x+=2){
+        const grad=[];
+        for(let y=ya;y<=yb;y+=Math.max(2,Math.round((yb-ya)/20)))grad.push(.62*difference(x-3,y,x+3,y)+.38*difference(x-6,y,x+6,y));
+        let val=median(grad)*.73+(grad.reduce((s,v)=>s+v,0)/Math.max(1,grad.length))*.27;
+        all.push(val);
+        const score=val-Math.abs(x-anchor)*.11;
+        if(score>best){best=score;xx=x}
+      }
+      // Narrow derivative refinement avoids the 6px-wide plateau caused by
+      // comparing pixels too far on either side of a seam.
+      let fineScore=-Infinity,fineX=xx;
+      for(let x=Math.max(lo,xx-8);x<=Math.min(hi,xx+8);x++){
+        const grads=[];
+        for(let y=ya;y<=yb;y+=Math.max(2,Math.round((yb-ya)/20)))
+          grads.push(.77*difference(x-1,y,x+1,y)+.23*difference(x-3,y,x+3,y));
+        const val=median(grads)-Math.abs(x-xx)*.12;
+        if(val>fineScore){fineScore=val;fineX=x}
+      }
+      const mean=all.reduce((s,v)=>s+v,0)/Math.max(1,all.length);
+      const confidence=clamp((best-12)/44,0,1)*.65+clamp((best/(mean+5)-.94)/1.1,0,1)*.35;
+      picks.push({x:fineX,quality:confidence,ym:(ya+yb)/2});
+    }
+    const reliable=picks.filter(p=>p.quality>.22);
+    let top=median(reliable.length?reliable.map(p=>p.x):picks.map(p=>p.x));
+    let bottom=top;
+    if(reliable.length>=2){
+      // Least-squares slope, guarded against huge isolated book-title edges.
+      const avgY=reliable.reduce((s,p)=>s+p.ym,0)/reliable.length,avgX=reliable.reduce((s,p)=>s+p.x,0)/reliable.length;
+      const numerator=reliable.reduce((s,p)=>s+(p.ym-avgY)*(p.x-avgX),0);
+      const denominator=reliable.reduce((s,p)=>s+(p.ym-avgY)**2,0)||1;
+      const slope=clamp(numerator/denominator,-.13,.13);
+      top=avgX+slope*(ylo-avgY);bottom=avgX+slope*(yhi-avgY);
+    }
+    return {top:clamp(top,lo-4,hi+4),bottom:clamp(bottom,lo-4,hi+4),quality:median(picks.map(p=>p.quality))};
+  }
+  function horizontalEdge(l,r,minY,maxY,anchor){
+    if(r-l<8||maxY-minY<8)return {y:anchor,quality:0};
+    let best=-Infinity,bestY=anchor,values=[];
+    for(let y=clamp(Math.round(minY),4,h-5);y<=clamp(Math.round(maxY),4,h-5);y+=2){
+      const samples=[];
+      for(let k=0;k<8;k++){let x=l+(r-l)*(k+.5)/8;samples.push(difference(x,y-3,x,y+3))}
+      const raw=median(samples)*.5+samples.reduce((s,v)=>s+v,0)/8*.5;
+      values.push(raw);
+      let score=raw-Math.abs(y-anchor)*.07;
+      if(score>best){best=score;bestY=y}
+    }
+    let mean=values.reduce((s,v)=>s+v,0)/Math.max(1,values.length);
+    let quality=clamp((best-12)/43,0,1)*.65+clamp((best/(mean+5)-1)/1.3,0,1)*.35;
+    return {y:bestY,quality};
+  }
+  const contours=new Map();
+  for(const group of groups){
+    const row=group.items.sort((a,b)=>a.cx-b.cx);
+    if(row.length<2)continue;
+    const midGaps=row.slice(1).map((b,i)=>b.cx-row[i].cx).filter(d=>d>5);
+    const typicalGap=median(midGaps)||w/12;
+    const barTop=median(row.map(a=>a.yt)),barBottom=median(row.map(a=>a.yb)),bh=median(row.map(a=>a.bh));
+    const ylo=clamp(barTop-Math.min(bh*.45,h*.13),5,h-25),yhi=clamp(barBottom+bh*.10,ylo+20,h-5);
+    const borders=[];
+    for(let i=0;i<row.length-1;i++){
+      let a=row[i],b=row[i+1],gap=b.cx-a.cx,lo=a.cx+gap*.13,hi=b.cx-gap*.13,anchor=(a.cx+b.cx)/2;
+      borders.push(verticalSeam(lo,hi,ylo,yhi,anchor));
+    }
+    function outer(first){
+      const center=first?row[0].cx:row[row.length-1].cx;
+      const neighbor=first?row[1].cx:row[row.length-2].cx;
+      const gap=Math.abs(neighbor-center),delta=first?-1:1;
+      const anchor=center+delta*Math.max(row[first?0:row.length-1].bw*.7,gap*.42);
+      return verticalSeam(Math.min(center+delta*gap*.22,anchor-gap*.24),Math.max(center+delta*gap*.70,anchor+gap*.24),ylo,yhi,anchor);
+    }
+    const seams=[outer(true),...borders,outer(false)];
+    // Reject implausible seam lean caused by a strong diagonal title or illustration.
+    // A left-edge outlier should never drag the upper-left book corner far away.
+    for(const seam of seams){
+      const mid=(seam.top+seam.bottom)/2,maxShift=Math.max(4,Math.min(typicalGap*.13,bh*.07));
+      seam.top=clamp(seam.top,mid-maxShift,mid+maxShift);
+      seam.bottom=clamp(seam.bottom,mid-maxShift,mid+maxShift);
+    }
+    // Across a shelf row the true upper edge is a sustained horizontal
+    // boundary visible on several books, unlike an isolated printed title.
+    function sharedTop(){
+      const probes=[];
+      for(const item of row)for(const frac of [-.23,.23])probes.push(item.cx+typicalGap*frac);
+      const start=clamp(barTop-bh*1.25,5,h-25),end=clamp(barTop-5,start+5,h-12);
+      let choices=[];
+      for(let y=start;y<end;y+=2){
+        const scores=probes.map(x=>difference(x,y-4,x,y+4));
+        const fraction=scores.filter(v=>v>18).length/scores.length;
+        const medianContrast=median(scores);
+        const mean=scores.reduce((a,b)=>a+b,0)/scores.length;
+        choices.push({y,score:fraction*60+medianContrast*.28+mean*.13});
+      }
+      const best=Math.max(0,...choices.map(a=>a.score));
+      // Pick the *earliest* strong edge; a decorative stripe lower down may
+      // be darker, but must not redefine the physical top of the shelf row.
+      const close=choices.find(a=>a.score>Math.max(20,best*.75));
+      return close?close.y:clamp(barTop-bh*.48,5,h-30);
+    }
+    const estimatedTop=sharedTop(),estimatedBottom=clamp(barBottom+bh*.18,estimatedTop+16,h-4);
+    for(let i=0;i<row.length;i++){
+      const it=row[i],L=seams[i],R=seams[i+1];
+      if(!(R.top-L.top>7&&R.bottom-L.bottom>7))continue;
+      const dx=R.top-L.top;
+      // A shorter book in a row may start below the common shelf upper edge.
+      // Detect its own first stable transition at its label center, where
+      // nothing is printed above the white label.
+      function bookTopAtCenter(){
+        const left=clamp(estimatedTop-bh*.18,5,h-25);
+        const right=clamp(Math.min(it.yt-6,estimatedTop+bh*.50),left+6,h-15);
+        let choices=[];
+        for(let y=left;y<right;y+=2){
+          const xs=[it.cx-Math.min(dx*.14,7),it.cx,it.cx+Math.min(dx*.14,7)];
+          const vals=xs.map(x=>difference(x,y-4,x,y+4));
+          const value=median(vals)*.65+(vals.reduce((a,b)=>a+b,0)/3)*.35;
+          choices.push({y,value});
+        }
+        const best=Math.max(0,...choices.map(q=>q.value));
+        // Require a strong, coherent row crossing; otherwise preserve the row prior.
+        const first=choices.find(q=>q.value>Math.max(17,best*.71));
+        return first?first.y:estimatedTop;
+      }
+      const personalTop=bookTopAtCenter();
+      // Independent upper-left and upper-right edge measurements prevent the
+      // common tilted upper-left corner from following text inside the book.
+      const leftRange=[L.top+dx*.12,L.top+dx*.43],rightRange=[L.top+dx*.57,R.top-dx*.12];
+      const topWindow=[Math.max(4,personalTop-bh*.12),Math.min(it.yt-4,personalTop+bh*.12)];
+      const topL=horizontalEdge(...leftRange,...topWindow,personalTop),topR=horizontalEdge(...rightRange,...topWindow,personalTop);
+      const bottomWindow=[Math.max(it.yb+3,estimatedBottom-bh*.12),Math.min(h-4,estimatedBottom+bh*.13)];
+      const bottomL=horizontalEdge(...leftRange,...bottomWindow,estimatedBottom),bottomR=horizontalEdge(...rightRange,...bottomWindow,estimatedBottom);
+      // Do not trust any single isolated high-contrast stroke to relocate a corner.
+      let yl=topL.quality>.30?topL.y:personalTop,yr=topR.quality>.30?topR.y:personalTop;
+      // Decorative strokes must not pull a corner away from the book's
+      // independently estimated upper edge by more than a few pixels.
+      const tolerance=Math.max(5,Math.min(12,dx*.12));
+      yl=clamp(yl,personalTop-tolerance,personalTop+tolerance);
+      yr=clamp(yr,personalTop-tolerance,personalTop+tolerance);
+      // If only one upper corner finds a loud decorative line, keep it on
+      // the shared shelf-top estimate instead of pulling TL out of place.
+      if(Math.abs(yl-yr)>Math.max(4,dx*.10)){if(topL.quality<topR.quality)yl=yr;else yr=yl;}
+      let bl=bottomL.quality>.28?bottomL.y:estimatedBottom,br=bottomR.quality>.28?bottomR.y:estimatedBottom;
+      if(Math.abs(bl-br)>Math.max(4,dx*.10)){const mean=(bl+br)/2;bl=mean;br=mean}
+      yl=Math.min(yl,it.yt-2);yr=Math.min(yr,it.yt-2);
+      bl=Math.max(bl,it.yb+2);br=Math.max(br,it.yb+2);
+      const poly=[{x:L.top,y:yl},{x:R.top,y:yr},{x:R.bottom,y:br},{x:L.bottom,y:bl}].map(p=>({x:clamp(p.x/factor,0,iw),y:clamp(p.y/factor,0,ih)}));
+      let confidence=clamp(.12+(L.quality+R.quality)*.27+(topL.quality+topR.quality)*.12+(bottomL.quality+bottomR.quality)*.06,0,.94);
+      if(dx>typicalGap*1.55)confidence=Math.min(.38,confidence);
+      contours.set(it.r.value,{points:poly,confidence});
+    }
+  }
+  return contours;
+}
+
+function smoothBookContours(books){
+  const now=performance.now(),next=new Map();
+  for(const [key,contour] of books){
+    const old=state.bookMemory.get(key);
+    if(old&&now-old.time<2000&&old.points?.length===4&&contour.points?.length===4){
+      const current=contour.points,previous=old.points;
+      const displacement=Math.hypot(current[0].x-previous[0].x,current[0].y-previous[0].y);
+      const height=Math.hypot(current[3].x-current[0].x,current[3].y-current[0].y);
+      if(displacement<height*.17)contour.points=current.map((p,i)=>({x:previous[i].x*.49+p.x*.51,y:previous[i].y*.49+p.y*.51}));
+    }
+    next.set(key,{points:contour.points,time:now});
+  }
+  state.bookMemory=next;
+  return books;
+}
+function attachBookContours(image,reads,live=false){
+  try{
+    const polygons=estimateBookContours(image,reads);
+    if(live)smoothBookContours(polygons);
+    return reads.map(r=>({...r,bookContour:polygons.get(r.value)||null}));
+  }catch(e){console.warn('Book edge estimation unavailable:',e);return reads;}
+}
+function draw(){
+  const canvas=$('overlay'),camera=$('camera'),bounds=camera.getBoundingClientRect();
+  if(bounds.width<1||bounds.height<1)return;
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  const targetWidth=Math.max(1,Math.round(bounds.width*dpr)),targetHeight=Math.max(1,Math.round(bounds.height*dpr));
+  if(canvas.width!==targetWidth||canvas.height!==targetHeight){canvas.width=targetWidth;canvas.height=targetHeight;}
+  const g=canvas.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,bounds.width,bounds.height);
+  const src=state.source==='video'?$('video'):state.source==='photo'?$('photo'):null;
+  if(!src)return;
+  const w=src.videoWidth||src.naturalWidth,h=src.videoHeight||src.naturalHeight;
+  if(!w||!h)return;
+  // Match CSS object-fit:contain, including mobile portrait/fullscreen letterboxing.
+  const scale=Math.min(bounds.width/w,bounds.height/h),offsetX=(bounds.width-w*scale)/2,offsetY=(bounds.height-h*scale)/2;
+  const toScreen=p=>({x:offsetX+p.x*scale,y:offsetY+p.y*scale});
+  const path=pts=>{g.beginPath();pts.forEach((p,i)=>i?g.lineTo(p.x,p.y):g.moveTo(p.x,p.y));g.closePath()};
+  const showSpines=$('showSpines')?.checked;
+  for(const r of state.reads){
+    if(showSpines&&r.bookContour?.points?.length===4){
+      const poly=r.bookContour,pts=poly.points.map(toScreen);
+      if(pts.every(finitePoint)){
+        g.save();path(pts);g.fillStyle=poly.confidence>.52?'#1fc49b0b':'#f2b14a0b';g.fill();
+        g.strokeStyle=poly.confidence>.52?'#42ddc3':'#f0bb74';g.lineWidth=poly.confidence>.52?2.1:1.7;
+        g.setLineDash([7,5]);g.lineJoin='round';g.stroke();g.restore();
+        // A distinct marker identifies the true top-left of the book contour.
+        const tl=pts[0];g.beginPath();g.arc(tl.x,tl.y,3.4,0,Math.PI*2);g.fillStyle=poly.confidence>.52?'#42ddc3':'#f0bb74';g.fill();
+      }
+    }
+    if(r.points?.length!==4)continue;
+    const pts=r.points.map(toScreen);if(pts.some(p=>!finitePoint(p)))continue;
+    g.save();g.strokeStyle=r.book?'#35e2a2':'#f7b66c';g.lineWidth=1.8;g.lineJoin='round';path(pts);g.stroke();
+    // First corner is always top-left after normalization, regardless of the
+    // native BarcodeDetector point ordering.
+    g.beginPath();g.arc(pts[0].x,pts[0].y,3.1,0,Math.PI*2);g.fillStyle='#fff';g.fill();g.restore();
+    const x=Math.min(...pts.map(p=>p.x)),y=Math.min(...pts.map(p=>p.y));
+    const label=r.value.slice(0,18);g.font='11px system-ui';
+    const width=Math.min(145,Math.max(38,g.measureText(label).width+12),bounds.width-12);
+    const lx=Math.max(6,Math.min(bounds.width-width-6,x)),ly=y>=30?y-25:Math.min(bounds.height-26,y+8);
+    g.fillStyle='#102e2bea';g.fillRect(lx,ly,width,20);g.fillStyle='#fff';g.fillText(label,lx+6,ly+14);
+  }
+}
+let busy=false;async function liveLoop(t,generation){
+  if(generation!==state.videoGeneration||state.source!=='video')return;
+  state.raf=requestAnimationFrame(next=>liveLoop(next,generation));
+  if(!supported||busy||t-state.scanAt<800)return;
+  state.scanAt=t;busy=true;
+  try{
+    let snapshot=frameCanvas();
+    let d=uniqueReads(await detect(snapshot));
+    if(generation!==state.videoGeneration||state.source!=='video')return;
+    state.reads=attachBookContours(snapshot,evaluate(smoothLiveReads(d)),true);draw();
+    $('cameraStatus').textContent=`실시간 코드 ${d.length}개 인식`;
+    renderResults(false);
+  }catch(e){$('cameraStatus').textContent='프레임 분석을 재시도하는 중입니다.'}
+  finally{busy=false}
+}
+async function scanNow(){
+  if(state.source==='none')return toast('먼저 사진을 선택하거나 카메라를 시작하세요.');
+  if(!supported)return toast('이 브라우저는 Code 128 자동 판독을 지원하지 않습니다.');
+  $('cameraStatus').textContent='분석 중…';
+  const isVideo=state.source==='video';
+  try{
+    const img=isVideo?frameCanvas():$('photo');
+    const found=uniqueReads(await detect(img));
+    // Geometry is calculated from the exact frame passed to the detector.
+    const rows=attachBookContours(img,evaluate(found),false);
+    if(isVideo){
+      const data=img.toDataURL('image/jpeg',.94);
+      stopCamera();const photo=$('photo');photo.src=data;
+      if(photo.decode)await photo.decode();
+      setSource('photo');
+    }
+    state.reads=rows;state.cornerMemory.clear();state.bookMemory.clear();
+    draw();renderResults(true);
+    $('cameraStatus').textContent=`분석 완료 · ${found.length}개 판독`;
+  }catch(e){toast('이미지 분석 실패: '+(e.message||e))}
+}
+function renderResults(detailed){let rows=state.reads,ok=0,bad=0,review=0,box=$('results');box.replaceChildren();let selected=$('scanShelf').value;let foreign=rows.filter(r=>r.book&&r.book.shelf!==selected);let suspect=rows.length>=3&&foreign.length/rows.length>=.7;for(let r of rows){if(suspect)r.status='책장 선택 확인';else if(r.book&&r.book.shelf===selected){r.status=$('orderConfirmed').checked&&detailed?'순번 수동 확인':'위치 확인 필요'}if(r.status==='다른 책장')bad++;else review++;let el=document.createElement('div');el.className='item';let a=document.createElement('div');let b=document.createElement('b');b.textContent=r.book?.title||r.value;let sm=document.createElement('small');sm.textContent=r.book?`${r.value} · 목적지 ${r.book.shelf} / ${r.book.rack}단 / ${r.book.pos}번`:r.value;a.append(b,sm);let pill=document.createElement('span');pill.className='pill '+(r.status==='다른 책장'?'bad':'review');pill.textContent=r.status;el.append(a,pill);box.append(el)}if(!rows.length){box.innerHTML='<div class="muted">인식된 코드가 없습니다. 라벨 크기·거리·조명을 확인하세요.</div>'} $('mRead').textContent=rows.length;$('mBad').textContent=bad;$('mReview').textContent=review;$('scanMessage').textContent=suspect?'촬영 책장 선택이 잘못되었을 가능성이 높습니다. 책장을 확인하세요.':rows.length?`인식 ${rows.length}개 · 녹색은 라벨, 청록 점선은 책등 추정 윤곽입니다. 좌상단 점은 보정된 꼭짓점입니다.`:'검출된 코드가 없습니다. 라벨과 촬영 조건을 확인하세요.';let tasks=$('tasks');tasks.replaceChildren();if(!foreign.length||suspect){tasks.textContent=suspect?'책장 선택을 확인하기 전에는 이동 지시를 생성하지 않습니다.':'확정된 다른 책장 이동 작업이 없습니다.';return}for(let r of foreign){let el=document.createElement('label');el.className='item';let cb=document.createElement('input');cb.type='checkbox';let t=document.createElement('span');t.textContent=`${r.book.title} → ${r.book.shelf} / ${r.book.rack}단 / ${r.book.pos}번`;el.append(cb,t);tasks.append(el)}}
+function loadFile(file){if(!file)return;if(!file.type.startsWith('image/'))return toast('이미지 파일을 선택하세요.');stopCamera();let url=URL.createObjectURL(file),im=$('photo');im.onload=()=>{setSource('photo');state.reads=[];draw();renderResults(false);URL.revokeObjectURL(url)};im.onerror=()=>{toast('이미지를 열지 못했습니다.');URL.revokeObjectURL(url)};im.src=url}
+$('manualAdd').onclick=()=>{let value=$('manualCode').value.trim().toUpperCase();if(!value)return toast('코드를 입력하세요.');if(state.reads.some(r=>r.value===value))return toast('이미 목록에 있는 코드입니다.');state.reads.push(...evaluate([{value,points:[]}]));renderResults(true);$('manualCode').value='';toast('수동 입력 코드를 확인 목록에 추가했습니다.')};
+$('startBtn').onclick=startCamera;$('stopBtn').onclick=stopCamera;$('captureBtn').onclick=scanNow;$('analyzeBtn').onclick=scanNow;$('uploadBtn').onclick=()=>$('fileInput').click();$('fileInput').onchange=e=>loadFile(e.target.files?.[0]);$('orderConfirmed').onchange=()=>renderResults(true);$('scanShelf').onchange=()=>{state.reads=evaluate(state.reads);renderResults(true)};$('showSpines').onchange=draw;
+function fullscreen(on){let el=$('camera');el.classList.toggle('scanFull',on);document.body.style.overflow=on?'hidden':'';draw();if(on&&el.requestFullscreen)el.requestFullscreen().catch(()=>{});if(!on&&document.fullscreenElement)document.exitFullscreen().catch(()=>{})}
+$('fullBtn').onclick=()=>fullscreen(true);$('exitBtn').onclick=()=>fullscreen(false);document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&$('camera').classList.contains('scanFull'))fullscreen(false)});window.addEventListener('resize',draw);if('ResizeObserver'in window)new ResizeObserver(draw).observe($('camera'));window.addEventListener('orientationchange',()=>requestAnimationFrame(draw));
+$('saveBtn').onclick=()=>{if(!state.reads.length)return toast('저장할 검사 결과가 없습니다.');state.history.unshift({time:new Date().toLocaleString('ko-KR'),shelf:$('scanShelf').value,reads:state.reads.map(r=>({value:r.value,status:r.status,title:r.book?.title||''}))});state.history=state.history.slice(0,100);persist();toast('검사 결과를 저장했습니다. 사진 원본은 저장하지 않습니다.')};
+function renderHistory(){let box=$('historyList');box.replaceChildren();if(!state.history.length){box.textContent='검사 기록이 없습니다.';return}for(let h of state.history){let el=document.createElement('div');el.className='item',left=document.createElement('div'),b=document.createElement('b'),sm=document.createElement('small');b.textContent=`${h.shelf} · ${h.time}`;sm.textContent=`판독 ${h.reads.length}개 · 오배치 ${h.reads.filter(r=>r.status==='다른 책장').length}개`;left.append(b,sm);el.append(left);box.append(el)}}
+$('clearHistory').onclick=()=>{if(confirm('검사 기록을 모두 삭제할까요?')){state.history=[];persist();renderHistory()}};
+shelfOptions();renderResults(false);window.addEventListener('pagehide',stopCamera);
+</script></body></html>
